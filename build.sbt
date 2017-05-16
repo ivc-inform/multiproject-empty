@@ -28,6 +28,7 @@ lazy val root = (project in file(".")).
 lazy val common = (project in file("common")).
   settings(
       libraryDependencies ++= Seq(
+          CommonDeps.logback.value,
           CommonDeps.logging.value,
           CommonDeps.configTypesafe.value,
           CommonDeps.scalaTest.value % Test
