@@ -1,7 +1,7 @@
 import com.typesafe.sbt.SbtGit.git
 import ru.simplesys.sbprocessing.sbtbuild.{CommonDeps, CommonSettings}
 
-name := "unknown"
+name := "multiproject-empty"
 
 lazy val root = (project in file(".")).
   enablePlugins(GitVersioning).
