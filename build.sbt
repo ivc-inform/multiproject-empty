@@ -29,6 +29,7 @@ lazy val common = (project in file("common")).
   settings(
       libraryDependencies ++= Seq(
           CommonDeps.logging.value,
+          CommonDeps.configTypesafe.value,
           CommonDeps.scalaTest.value % Test
       )
   ).settings(CommonSettings.defaultProjectSettings)

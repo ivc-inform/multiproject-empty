@@ -19,7 +19,7 @@ object CommonDeps {
         
         val scalaTestVersion = "3.0.1"
         val loggingVersion = "3.5.0"
-
+        val configTypesafeVersion = "1.3.1"
     }
     
     val akkaActor = Def.setting("com.typesafe.akka" %% "akka-actor" % versions.akkaVersion)
@@ -36,6 +36,8 @@ object CommonDeps {
     val akkaHttpTestKid = Def.setting("com.typesafe.akka" %% "akka-http-testkit" % versions.akkaHttpVersion)
 
     val logging = Def.setting("com.typesafe.scala-logging" %% "scala-logging" % versions.loggingVersion)
+    val configTypesafe = Def.setting("com.typesafe" % "config" % versions.configTypesafeVersion)
+
     val scalaTest = Def.setting("org.scalatest" %% "scalatest" % versions.scalaTestVersion)
 }
 
