@@ -1,6 +1,5 @@
 package ru.simplesys.sbprocessing.sbtbuild
 
-import sbt.Keys.scalaVersion
 import sbt.{Def, _}
 
 object PluginDeps {
