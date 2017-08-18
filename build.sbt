@@ -1,4 +1,3 @@
-import com.typesafe.sbt.SbtGit.git
 import ru.simplesys.sbprocessing.sbtbuild.{CommonDeps, CommonSettings}
 
 name := "multiproject-empty"
