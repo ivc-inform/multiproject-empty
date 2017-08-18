@@ -5,19 +5,10 @@ name := "multiproject-empty"
 
 lazy val root = (project in file(".")).
   enablePlugins(GitVersioning).
-  aggregate(common, core).
+  aggregate(common).
   settings(
       inThisBuild(Seq(
-          git.baseVersion := CommonSettings.settingValues.baseVersion,
           scalaVersion := CommonSettings.settingValues.scalaVersion,
-          publishTo := {
-              val corporateRepo = "http://toucan.simplesys.lan/"
-              if (isSnapshot.value)
-                  Some("snapshots" at corporateRepo + "artifactory/libs-snapshot-local")
-              else
-                  Some("releases" at corporateRepo + "artifactory/libs-release-local")
-          },
-          credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
       )
         ++ CommonSettings.defaultSettings),
       publishArtifact in(Compile, packageBin) := false,
@@ -28,16 +19,7 @@ lazy val root = (project in file(".")).
 lazy val common = (project in file("common")).
   settings(
       libraryDependencies ++= Seq(
-          CommonDeps.logback.value,
-          CommonDeps.logging.value,
-          CommonDeps.configTypesafe.value,
-          CommonDeps.scalaTest.value % Test
+          CommonDeps.scalaTest % Test
       )
   ).settings(CommonSettings.defaultProjectSettings)
 
-lazy val core = (project in file("core")).dependsOn(common).
-  settings(
-      libraryDependencies ++= Seq(
-          CommonDeps.scalaTest.value % Test
-      )
-  ).settings(CommonSettings.defaultProjectSettings)

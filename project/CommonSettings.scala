@@ -4,9 +4,7 @@ import sbt.Setting
 
 object CommonSettings {
     object settingValues {
-        val baseVersion = "0.0"
-
-        val scalaVersion = "2.12.2"
+        val scalaVersion = "2.12.3"
         val organization = "unknown"
 
         val scalacOptions = Seq(
@@ -30,6 +28,4 @@ object CommonSettings {
     val defaultProjectSettings: Seq[Setting[_]] = {
         aether.AetherPlugin.autoImport.overridePublishSettings
     }
-
-    val dockerGroupName = "mfmd"
 }
