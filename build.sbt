@@ -3,7 +3,7 @@ import ru.simplesys.sbprocessing.sbtbuild.{CommonDeps, CommonSettings}
 name := "multiproject-empty"
 
 lazy val root = (project in file(".")).
-  enablePlugins(GitVersioning).
+  //enablePlugins(GitVersioning).
   aggregate(common).
   settings(
       inThisBuild(Seq(
