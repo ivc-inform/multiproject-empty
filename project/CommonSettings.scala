@@ -25,8 +25,4 @@ object CommonSettings {
             organization := settingValues.organization
         )
     }
-
-    val defaultProjectSettings: Seq[Setting[_]] = {
-        aether.AetherPlugin.autoImport.overridePublishSettings
-    }
 }

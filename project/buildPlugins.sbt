@@ -8,5 +8,6 @@ lazy val root = Project(id = "buildPlugins", base = file(".")).//enablePlugins(G
       //git.baseVersion := CommonSettings.settingValues.baseVersion
   ))).
   settings(
+      classpathTypes += "maven-plugin",
       PluginDeps.sbtNativePackager
   )

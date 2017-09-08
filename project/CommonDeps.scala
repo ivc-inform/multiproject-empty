@@ -4,7 +4,7 @@ import sbt.{Def, _}
 
 object PluginDeps {
     object versions {
-        val sbtNativePackagerVersion = "1.2.0-M8"
+        val sbtNativePackagerVersion = "1.2.4"
     }
 
     val sbtNativePackager = addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % versions.sbtNativePackagerVersion)
