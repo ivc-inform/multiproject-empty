@@ -6,6 +6,7 @@ object CommonSettings {
     object settingValues {
         val scalaVersion = "2.12.3"
         val organization = "unknown"
+        val baseVersion = "0.0.0.0"
 
         val scalacOptions = Seq(
             "-feature",

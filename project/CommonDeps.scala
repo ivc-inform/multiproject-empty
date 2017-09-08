@@ -12,7 +12,7 @@ object PluginDeps {
 
 object CommonDeps {
     object versions {
-        val scalaTestVersion = "3.0.1"
+        val scalaTestVersion = "3.0.3"
     }
 
 

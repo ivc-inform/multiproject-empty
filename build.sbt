@@ -7,7 +7,7 @@ lazy val root = (project in file(".")).
   aggregate(common).
   settings(
       inThisBuild(Seq(
-          scalaVersion := CommonSettings.settingValues.scalaVersion,
+          scalaVersion := CommonSettings.settingValues.scalaVersion
       )
         ++ CommonSettings.defaultSettings),
       publishArtifact in(Compile, packageBin) := false,
