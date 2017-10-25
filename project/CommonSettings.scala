@@ -4,7 +4,7 @@ import sbt.Setting
 
 object CommonSettings {
     object settingValues {
-        val scalaVersion = "2.12.3"
+        val scalaVersion = "2.12.4"
         val organization = "unknown"
         //val baseVersion = "0.0.0.0"
 

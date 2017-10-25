@@ -9,5 +9,7 @@ lazy val root = Project(id = "buildPlugins", base = file(".")).//enablePlugins(G
   ))).
   settings(
       classpathTypes += "maven-plugin",
-      PluginDeps.sbtNativePackager
+      PluginDeps.sbtNativePackager,
+      PluginDeps.sbtRevolver,
+      PluginDeps.jrebelPlugin
   )
