@@ -26,7 +26,7 @@ lazy val common = Project(id = "common", base = file("common"))
   .dependsOn()
   .settings(
       libraryDependencies ++= Seq(
-          CommonDeps.scalaTest % Test
+          CommonDeps.scalaTest 
       )
   )
 
