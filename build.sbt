@@ -1,3 +1,4 @@
+import com.simplesys.jrebel.JRebelPlugin.jrebel
 import ru.simplesys.sbprocessing.sbtbuild.{CommonDeps, CommonSettings}
 import sbt.{Credentials, Path}
 
@@ -26,7 +27,15 @@ lazy val common = Project(id = "common", base = file("common"))
   .dependsOn()
   .settings(
       libraryDependencies ++= Seq(
-          CommonDeps.scalaTest 
-      )
+          CommonDeps.scalaTest
+      ),
+      javaOptions ++= Seq(
+          "-javaagent:../jrebel/jrebel.jar",
+          "-noverify",
+          "-XX:+UseConcMarkSweepGC",
+          "-XX:+CMSClassUnloadingEnabled"
+      ),
+      JRebelPlugin.jrebelSettings,
+      jrebel.enabled := true
   )
 
