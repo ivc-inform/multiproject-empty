@@ -5,21 +5,23 @@ import sbt.{Credentials, Path}
 name := "multiproject-empty"
 
 lazy val root = (project in file("."))
-  .enablePlugins(GitVersioning)
+  //.enablePlugins(GitVersioning)
   .aggregate(common)
   .settings(
       inThisBuild(Seq(
-          scalaVersion := CommonSettings.settingValues.scalaVersion,
-          publishTo := {
-              val corporateRepo = "http://toucan.simplesys.lan/"
-              if (isSnapshot.value)
-                  Some("snapshots" at corporateRepo + "artifactory/libs-snapshot-local")
-              else
-                  Some("releases" at corporateRepo + "artifactory/libs-release-local")
-          },
           credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
       ) ++ CommonSettings.defaultSettings),
-      publishArtifact := false,
+      scalaVersion := CommonSettings.settingValues.scalaVersion,
+      publishTo := {
+          val corporateRepo = "http://toucan.simplesys.lan/"
+          if (isSnapshot.value)
+              Some("snapshots" at corporateRepo + "artifactory/libs-snapshot-local")
+          else
+              Some("releases" at corporateRepo + "artifactory/libs-release-local")
+      },
+      publishArtifact in(Compile, packageBin) := false,
+      publishArtifact in(Compile, packageDoc) := false,
+      publishArtifact in(Compile, packageSrc) := false
   )
 
 
