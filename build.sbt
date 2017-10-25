@@ -3,10 +3,10 @@ import sbt.{Credentials, Path}
 
 name := "multiproject-empty"
 
-lazy val root = (project in file(".")).
-  enablePlugins(GitVersioning).
-  aggregate(common).
-  settings(
+lazy val root = (project in file("."))
+  .enablePlugins(GitVersioning)
+  .aggregate(common)
+  .settings(
       inThisBuild(Seq(
           scalaVersion := CommonSettings.settingValues.scalaVersion,
           publishTo := {
@@ -24,7 +24,7 @@ lazy val root = (project in file(".")).
 
 lazy val common = Project(id = "common", base = file("common"))
   .dependsOn()
-    .settings(
+  .settings(
       libraryDependencies ++= Seq(
           CommonDeps.scalaTest % Test
       )
