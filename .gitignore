@@ -29,7 +29,7 @@ web-ui/src/main/webapp/javascript/IncludeModules
 
 # Package Files #
 *.jar
-!jerebel.jar
+!jrebel.jar
 *.war
 *.ear
 
