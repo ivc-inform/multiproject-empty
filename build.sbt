@@ -9,7 +9,6 @@ lazy val root = (project in file(".")).
   settings(
       inThisBuild(Seq(
           scalaVersion := CommonSettings.settingValues.scalaVersion,
-          scalaVersion := "2.12.4",
           publishTo := {
               val corporateRepo = "http://toucan.simplesys.lan/"
               if (isSnapshot.value)
