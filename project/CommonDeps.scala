@@ -15,10 +15,7 @@ object PluginDeps {
 }
 
 object CommonDeps {
-    object versions {
-        val scalaTestVersion = "3.0.3"
-    }
+    val scalaTestVersion = "3.0.4"
 
-
-    val scalaTest = "org.scalatest" %% "scalatest" % versions.scalaTestVersion
+    val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion
 }
