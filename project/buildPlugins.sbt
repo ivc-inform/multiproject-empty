@@ -12,5 +12,6 @@ lazy val root = Project(id = "buildPlugins", base = file("."))
       classpathTypes += "maven-plugin",
       PluginDeps.sbtNativePackager,
       PluginDeps.sbtRevolver,
-      PluginDeps.jrebelPlugin
+      PluginDeps.jrebelPlugin,
+      PluginDeps.coursier
   )

@@ -10,6 +10,7 @@ object PluginDeps {
     val sbtNativePackager = addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % sbtNativePackagerVersion)
     val sbtRevolver = addSbtPlugin("io.spray" % "sbt-revolver" % sbtResolverVersion)
     val jrebelPlugin = addSbtPlugin("com.simplesys" % "jrebel-plugin" % jrabelPluginVersion)
+    val coursier = addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC12")
 }
 
 object CommonDeps {
