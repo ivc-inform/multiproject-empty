@@ -1,43 +1,48 @@
-import com.simplesys.jrebel.JRebelPlugin.jrebel
-import ru.simplesys.sbprocessing.sbtbuild.{CommonDeps, CommonSettings}
-import sbt.{Credentials, Path}
+import sbtcrossproject.{CrossType, crossProject}
 
-name := "multiproject-empty"
-
-lazy val root = (project in file("."))
-  //.enablePlugins(GitVersioning)
-  .aggregate(common)
+lazy val root = crossProject(JSPlatform, JVMPlatform)
+  .settings(CommonSettings.noPublishSettings)
   .settings(
       inThisBuild(Seq(
-          credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
-      ) ++ CommonSettings.defaultSettings),
-      scalaVersion := CommonSettings.settingValues.scalaVersion,
-      publishTo := {
-          val corporateRepo = "http://toucan.simplesys.lan/"
-          if (isSnapshot.value)
-              Some("snapshots" at corporateRepo + "artifactory/libs-snapshot-local")
-          else
-              Some("releases" at corporateRepo + "artifactory/libs-release-local")
-      },
-      publishArtifact in(Compile, packageBin) := false,
-      publishArtifact in(Compile, packageDoc) := false,
-      publishArtifact in(Compile, packageSrc) := false
+          scalaVersion := CommonSettings.settingValues.scalaVersion,
+          scalacOptions := CommonSettings.settingValues.scalacOptions,
+          organization := CommonSettings.settingValues.organization
+      ) ++ CommonSettings.defaultSettings)
   )
+  .aggregate(ganttImproved)
+  .dependsOn(ganttImproved)
 
-
-lazy val common = Project(id = "common", base = file("common"))
-  .dependsOn()
+lazy val ganttImproved = crossProject(JSPlatform, JVMPlatform)
+  .crossType(CrossType.Pure)
+  .settings(CommonSettings.publishSettings)
   .settings(
-      libraryDependencies ++= Seq(
-          CommonDeps.scalaTest
-      ),
-      javaOptions ++= Seq(
-          "-javaagent:../jrebel/jrebel.jar",
-          "-noverify",
-          "-XX:+UseConcMarkSweepGC",
-          "-XX:+CMSClassUnloadingEnabled"
-      ),
-      JRebelPlugin.jrebelSettings,
-      jrebel.enabled := true
+      name := "jsgantt-improved"
   )
+  .settings(CommonSettings.defaultSettings)
+  .jvmSettings(
+      libraryDependencies ++= Seq(
+          "org.scalatest" %% "scalatest" % "3.0.4" % Test
+      )
+  )
+  .jsSettings(
+      crossTarget in fastOptJS := (sourceDirectory in Compile).value / "javascriptJS",
+      crossTarget in fullOptJS := (sourceDirectory in Compile).value / "javascriptJS",
+      crossTarget in packageJSDependencies := (sourceDirectory in Compile).value / "javascriptJS",
+      libraryDependencies ++= Seq(
+          "org.scalatest" %%% "scalatest" % "3.0.4" % Test
+      ),
+      scalacOptions ++= {
+          if (scalaJSVersion.startsWith("0.6."))
+              Seq("-P:scalajs:sjsDefinedByDefault")
+          else
+              Nil
+      }
+  )
+
+lazy val ganttImprovedJS = ganttImproved.js
+lazy val ganttImprovedJVM = ganttImproved.jvm
+
+
+
+
 
