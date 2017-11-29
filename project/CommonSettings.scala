@@ -5,6 +5,7 @@ import sbt.{Credentials, Path}
 object CommonSettings {
     object settingValues {
 
+        val name = "unknown"
         val version = "0.0-SNAPSHOT"
         val scalaVersion = "2.12.4"
         val organization = "com.simplesys"

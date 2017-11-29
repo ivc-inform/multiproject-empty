@@ -6,17 +6,18 @@ lazy val root = crossProject(JSPlatform, JVMPlatform)
       inThisBuild(Seq(
           scalaVersion := CommonSettings.settingValues.scalaVersion,
           scalacOptions := CommonSettings.settingValues.scalacOptions,
-          organization := CommonSettings.settingValues.organization
+          organization := CommonSettings.settingValues.organization,
+          name := CommonSettings.settingValues.name
       ) ++ CommonSettings.defaultSettings)
   )
-  .aggregate(ganttImproved)
-  .dependsOn(ganttImproved)
+  .aggregate(noName)
+  .dependsOn(noName)
 
-lazy val ganttImproved = crossProject(JSPlatform, JVMPlatform)
+lazy val noName = crossProject(JSPlatform, JVMPlatform)
   .crossType(CrossType.Pure)
   .settings(CommonSettings.publishSettings)
   .settings(
-      name := "jsgantt-improved"
+      name := "no-name"
   )
   .settings(CommonSettings.defaultSettings)
   .jvmSettings(
@@ -39,8 +40,8 @@ lazy val ganttImproved = crossProject(JSPlatform, JVMPlatform)
       }
   )
 
-lazy val ganttImprovedJS = ganttImproved.js
-lazy val ganttImprovedJVM = ganttImproved.jvm
+lazy val noNameJS = noName.js
+lazy val noNameJVM = noName.jvm
 
 
 
