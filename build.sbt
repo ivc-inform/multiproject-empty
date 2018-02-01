@@ -26,17 +26,14 @@ lazy val anyName = crossProject(JSPlatform, JVMPlatform)
       )
   )
   .jsSettings(
-      crossTarget in fastOptJS := (sourceDirectory in Compile).value / "javascriptJS",
-      crossTarget in fullOptJS := (sourceDirectory in Compile).value / "javascriptJS",
-      crossTarget in packageJSDependencies := (sourceDirectory in Compile).value / "javascriptJS",
+      crossTarget in fastOptJS := (sourceDirectory in Compile).value / ".." / ".." / ".." / ".jvm" / "src" / "main" / "webapp" / "javascript" / "generated" / "generatedComponentsJS",
+      crossTarget in fullOptJS := (sourceDirectory in Compile).value / ".." / ".." / ".." / ".jvm" / "src" / "main" / "webapp" / "javascript" / "generated" / "generatedComponentsJS",
+      crossTarget in packageJSDependencies := (sourceDirectory in Compile).value / ".." / ".." / ".." / ".jvm" / "src" / "main" / "webapp" / "javascript" / "generated" / "generatedComponentsJS",
       libraryDependencies ++= Seq(
           CommonDepsScalaJS.scalaTest.value,
       ),
       scalacOptions ++= {
-          if (scalaJSVersion.startsWith("0.6."))
-              Seq("-P:scalajs:sjsDefinedByDefault")
-          else
-              Nil
+          if (scalaJSVersion.startsWith("0.6.")) Seq("-P:scalajs:sjsDefinedByDefault") else Nil
       }
   )
 
