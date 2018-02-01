@@ -22,7 +22,7 @@ lazy val anyName = crossProject(JSPlatform, JVMPlatform)
   .settings(CommonSettings.defaultSettings)
   .jvmSettings(
       libraryDependencies ++= Seq(
-          "org.scalatest" %% "scalatest" % "3.0.4" % Test
+          CommonDeps.scalaTest % Test
       )
   )
   .jsSettings(
@@ -30,7 +30,7 @@ lazy val anyName = crossProject(JSPlatform, JVMPlatform)
       crossTarget in fullOptJS := (sourceDirectory in Compile).value / "javascriptJS",
       crossTarget in packageJSDependencies := (sourceDirectory in Compile).value / "javascriptJS",
       libraryDependencies ++= Seq(
-          "org.scalatest" %%% "scalatest" % "3.0.4" % Test
+          CommonDepsScalaJS.scalaTest.value,
       ),
       scalacOptions ++= {
           if (scalaJSVersion.startsWith("0.6."))
