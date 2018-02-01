@@ -10,10 +10,10 @@ lazy val root = crossProject(JSPlatform, JVMPlatform)
           name := CommonSettings.settingValues.name
       ) ++ CommonSettings.defaultSettings)
   )
-  .aggregate(noName)
-  .dependsOn(noName)
+  .aggregate(anyName)
+  .dependsOn(anyName)
 
-lazy val noName = crossProject(JSPlatform, JVMPlatform)
+lazy val anyName = crossProject(JSPlatform, JVMPlatform)
   .crossType(CrossType.Pure)
   .settings(CommonSettings.publishSettings)
   .settings(
@@ -40,8 +40,8 @@ lazy val noName = crossProject(JSPlatform, JVMPlatform)
       }
   )
 
-lazy val noNameJS = noName.js
-lazy val noNameJVM = noName.jvm
+lazy val noNameJS = anyName.js
+lazy val noNameJVM = anyName.jvm
 
 
 
