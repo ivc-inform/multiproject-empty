@@ -11,15 +11,11 @@ lazy val root = Project(id = "buildPlugins", base = file(".")).dependsOn(
   .settings(sbt.inThisBuild(CommonSettings.defaultSettings))
   .settings(
       classpathTypes += "maven-plugin",
-      PluginDeps.devPlugin,
       PluginDeps.sbtCoffeeScript,
       PluginDeps.mergeJS,
       PluginDeps.xsbtWeb,
       PluginDeps.sbtNativePackager,
       PluginDeps.jrebelPlugin,
       PluginDeps.crossproject,
-      PluginDeps.sbtCrossproject,
-      libraryDependencies ++= Seq(
-          PluginDeps.circeExtender
-      )
+      PluginDeps.sbtCrossproject
   )
